@@ -165,7 +165,6 @@ elif choice == "NER for URL":
     st.write(" ")
     st.write("")
     inp = st.text_input("Type URL Here:", placeholder = "Type here...")
-    text_length = st.slider("Lenght Of the text to extract", 50, 1000)
     if st.button('detect'):
         if inp == "":
             st.error("Please enter a url !")
@@ -178,8 +177,6 @@ elif choice == "NER for URL":
                 e = e + (words + "  -->  " + spacy.explain(words)) + "\n"
             st.text_area("Explanation of Entities", e, height = 150)
             doc = analyze_text(text)
-            len_of_text = len(doc)
-            doc = (doc[:text_length])
             html = displacy.render(doc, style = 'ent')
             html = html.replace("\n\n", "\n")
             st.write("")
